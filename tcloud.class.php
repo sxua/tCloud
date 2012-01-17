@@ -60,39 +60,7 @@ class tCloud {
 	}
 
 	function getClassFromPercent($percent) {
-		switch ($percent) {
-			case ($percent >= 99):
-				$class = 9;
-			break;
-			case ($percent >= 70):
-				$class = 8;
-			break;
-			case ($percent >= 60):
-				$class = 7;
-			break;
-			case ($percent >= 50):
-				$class = 6;
-			break;
-			case ($percent >= 40):
-				$class = 5;
-			break;
-			case ($percent >= 30):
-				$class = 4;
-			break;
-			case ($percent >= 20):
-				$class = 3;
-			break;
-			case ($percent >= 10):
-				$class = 2;
-			break;
-			case ($percent >= 5):
-				$class = 1;
-			break;
-			case ($percent < 5):
-				$class = 0;
-			break;
-		}
-		return $class;
+	  return ceil($percent / 10) - 1;
 	}
 
 	function shuffleCloud() {
@@ -118,7 +86,7 @@ class tCloud {
 			$return = "<ul>\n";
 			foreach ($this->tags as $tag => $popularity) {
 				$sizeRange = $this->getClassFromPercent(($popularity / $this->max) * 100);
-				$return .= "<li><a href=\"http://search.twitter.com/search?q={$tag}\" class=\"w{$sizeRange}\" title=\"{$popularity}\">{$tag}</a></li>\n";
+				$return .= "<li><a href=\"http://search.twitter.com/search?q={$tag}\" class=\"w{$sizeRange}\" title=\"{$popularity}\" rel=\"twipsy\">{$tag}</a></li>\n";
 			}
 			$return .= "</ul>";
 		}
