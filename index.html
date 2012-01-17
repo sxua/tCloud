@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-	<head>
-		<title>tCloud</title>
-		<meta http="content-type" content="text/html;charset=utf-8" />
-		<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
-		<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-		<script type="text/javascript" src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-alerts.js"></script>
-		<script type="text/javascript" src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-twipsy.js"></script>
-		<script type="text/javascript">
-  		$(document).ready(function(){
-  		  $("a[rel=twipsy]").twipsy({live: true});
-  			$(".b-form form").submit(function(e){
-  			  e.preventDefault();
-  				$(".b-cloud").fadeOut(100);
-  				$(".b-loader").delay(150).show();
-  				$.post("/query.php", {user: $("#username").val()}, function(data) {
-  					$(".b-loader").hide();
-  					if (data.length > 0) {
-  					  $(".b-cloud").fadeIn(100).html(data);
-  					} else {
-  					  $(".alert-message").remove();
-  					  $(".b-body").prepend('<div class="alert-message hide fade in error"><a class="close" href="#">&times;</a><p><strong>Oops!</strong> Something\'s gone wrong.</p></div>');
-  					  $(".alert-message").fadeIn(100).alert();
-					  }
-  				});
-  			});
-  		});
-		</script>
-	</head>
-	<body>
-		<div class="b-canvas container">
-		  <div class="topbar">
-		    <div class="fill">
+  <head>
+    <title>tCloud</title>
+    <meta http="content-type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+    <link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-alerts.js"></script>
+    <script type="text/javascript" src="http://twitter.github.com/bootstrap/1.4.0/bootstrap-twipsy.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        $("a[rel=twipsy]").twipsy({live: true});
+        $(".b-form form").submit(function(e){
+          e.preventDefault();
+          $(".b-cloud").fadeOut(100);
+          $(".b-loader").delay(150).show();
+          $.post("/query.php", {user: $("#username").val()}, function(data) {
+            $(".b-loader").hide();
+            if (data.length > 0) {
+              $(".b-cloud").fadeIn(100).html(data);
+            } else {
+              $(".alert-message").remove();
+              $(".b-body").prepend('<div class="alert-message hide fade in error"><a class="close" href="#">&times;</a><p><strong>Oops!</strong> Something\'s gone wrong.</p></div>');
+              $(".alert-message").fadeIn(100).alert();
+            }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <div class="b-canvas container">
+      <div class="topbar">
+        <div class="fill">
           <div class="container">
             <h3><a href="/">tCloud</a></h3>
             <ul>
@@ -45,25 +45,25 @@
               </li>
             </ul>
           </div>
-  		  </div>
-  		</div>
-			<div class="b-header">
-				<h1><a href="/" title="tCloud - Tweets or GTFO!" rel="twipsy" data-placement="right">tCloud</a></h1>
-				<h2>“Show me your tweets”</h2>
-			</div>
-			<div class="b-body">
-				<div class="b-form">
-					<form action="/query.php" method="post">
-						<input type="text" id="username" name="user" placeholder="Twitter username" />
-						<input type="submit" value="Show 'em all" class="btn primary" />
-					</form>
-				</div>
-				<div class="b-loader"><img src="/images/loading.gif" width="66" height="66" alt="Loading..." /></div>
-				<div class="b-cloud well"></div>
-			</div>
-			<div class="b-footer">
-				<p>&copy; 2010 <a href="http://twitter.com/ukrainesax" title="That's a Twitter" rel="twipsy">Olexandr Skrypnyk</a></p>
-			</div>
-		</div>
-	</body>
+        </div>
+      </div>
+      <div class="b-header">
+        <h1><a href="/" title="tCloud - Tweets or GTFO!" rel="twipsy" data-placement="right">tCloud</a></h1>
+        <h2>&#147;Show me your tweets&#148;</h2>
+      </div>
+      <div class="b-body">
+        <div class="b-form">
+          <form action="/query.php" method="post">
+            <input type="text" id="username" name="user" placeholder="Twitter username" />
+            <input type="submit" value="Show 'em all" class="btn primary" />
+          </form>
+        </div>
+        <div class="b-loader"><img src="/images/loading.gif" width="66" height="66" alt="Loading..." /></div>
+        <div class="b-cloud well"></div>
+      </div>
+      <div class="b-footer">
+        <p>&copy; 2010 <a href="http://twitter.com/ukrainesax" title="That's a Twitter" rel="twipsy">Olexandr Skrypnyk</a></p>
+      </div>
+    </div>
+  </body>
 </html>
