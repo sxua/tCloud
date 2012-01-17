@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+	<head>
+		<title>tCloud</title>
+		<meta http="content-type" content="text/html;charset=utf-8" />
+		<link href="/stylesheets/style.css" rel="stylesheet" type="text/css" />
+		<!--[if IE 6]>
+			<link href="/stylesheets/style.ie6.css" type="text/css" rel="stylesheet" />
+		<![endif]-->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		<script type="text/javascript">
+  		$(document).ready(function(){
+  			$(".b-form form").submit(function(e){
+  			  e.preventDefault();
+  				$(".b-cloud").fadeOut(700);
+  				$(".b-loader").delay(800).show();
+  				$.post("/query.php", {user: $("#username").val()}, function(data) {
+  					$(".b-loader").hide();
+  					$(".b-cloud").fadeIn(700).html(data);
+  				});
+  			});
+  		});
+		</script>
+	</head>
+	<body>
+		<div class="b-canvas">
+			<div class="b-header">
+				<h1><a href="/" title="tCloud - Tweets or GTFO!">tCloud</a></h1>
+				<h2>“Show me your tweets”</h2>
+			</div>
+			<div class="b-body">
+				<div class="b-form">
+					<form action="/query.php" method="post">
+						<input type="text" id="username" name="user" />
+						<input type="submit" id="submit" value="Submit!" />
+					</form>
+				</div>
+				<div class="b-loader"><img src="/images/loading.gif" width="66" height="66" alt="Loading..." /></div>
+				<div class="b-cloud"></div>
+			</div>
+			<div class="b-footer">
+				<p>&copy; 2010 <a href="http://twitter.com/ukrainesax">Olexandr Skrypnyk</a></p>
+			</div>
+		</div>
+	</body>
+</html>
